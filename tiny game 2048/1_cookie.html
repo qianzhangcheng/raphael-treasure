@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script>
+/*创建cookie
+    var date=new Date();
+    date.setDate(date.getDate()+7);
+    document.cookie=
+      "username=zhangdong;expires="+date.toGMTString();
+    document.cookie=
+      "movie=欢乐颂;expires="+date.toGMTString();
+*/
+/*读取cookie*/
+  document.write(document.cookie);
+  function getCookie(cookieName){
+    var str=document.cookie;
+    var i=-1;
+    if((i=str.indexOf(cookieName+"="))!=-1){
+      var start=i+cookieName.length+1;
+      var end=str.indexOf(";",start);
+      return str.slice(start,end==-1?str.length:end);
+    }
+  }
+  function setCookie(cookieName,value){
+    var date=new Date();
+    date.setFullYear(date.getFullYear()+1);
+    document.cookie=
+      cookieName+"="+value+";expires="+date.toGMTString();
+  }
+  console.log(getCookie("username"));
+  console.log(getCookie("movie"));
+  
+  </script>
+ </head>
+ <body>
+  
+ </body>
+</html>

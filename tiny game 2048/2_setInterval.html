@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    #pop{
+      width:50px; height:50px; 
+      background-color:red;
+      position:absolute;
+      top:0; left:0;
+    }
+  </style>
+  <script>
+    //pop，在3s内，经过100步，移动到left为600px的位置
+    var DURATION=3000,
+        STEPS=200,
+        DISTANCEL=600,
+        DISTANCET=300;
+    //先计算出每步步长和时间间隔: 
+    var stepL=DISTANCEL/STEPS;
+    var stepT=DISTANCET/STEPS
+    var interval=DURATION/STEPS;
+    //定义一个记录步数的变量
+    var moved=0;//已经移动的步数
+    //Step1:定义任务函数（每一步要执行的任务）
+    function task(){//每一步要执行的任务
+      //获得pop当前的left值
+      var left=//获取样式，都用getComputedStyle
+        parseFloat(getComputedStyle(pop).left);
+      var top=
+        parseFloat(getComputedStyle(pop).top);
+      //将left值+step,再设置回pop的left属性
+      pop.style.left=left+stepL+"px";//设置都用style.
+      pop.style.top=top+stepT+"px";
+      moved++;//记录走过的步数
+      //如果步数走完，就停止定时器
+      if(moved==STEPS){clearInterval(timer)}
+    }
+    var timer=null;//保存定时器序号，专用于停止定时器
+    window.onload=function(){
+      //启动定时器，传入任务函数对象和时间间隔，保存序号
+      timer=setInterval(task,interval);
+    }
+  </script>
+ </head>
+ <body>
+  <div id="pop"></div>
+  <script>
+    console.log(pop.style.left);
+  </script>
+ </body>
+</html>
