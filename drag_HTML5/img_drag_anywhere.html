@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  img {
+    border: 4px solid transparent;
+    position: absolute;  /*为了是left/top生效*/
+  }
+  </style>
+ </head>
+ <body>
+  <h1>可以拖动的图片</h1> 
+  <img id="img2" src="img/2.jpg" alt="">
+
+  <script>
+    var startX = 0; //刚开始拖动时鼠标距离图像左上角的偏移量
+    var startY = 0;
+    //开始拖动
+    img2.ondragstart = function(event){
+      this.style.border="4px dashed #aaa";
+      startX = event.offsetX; //刚一拖动时记录鼠标的偏移量
+      startY = event.offsetY;
+    }
+    //拖动中
+    img2.ondrag = function(event){
+      //console.log('x:%d y:%d', event.pageX, event.pageY);
+      if(event.pageX===0 && event.pageY===0){
+        return; //很可能是因为到了拖动的最后一刻
+      }
+      //获得当前事件发生的坐标
+      var x = event.pageX - startX;
+      var y = event.pageY - startY;
+      this.style.left = x+'px';
+      this.style.top = y+'px';
+    }
+    //拖动结束
+    img2.ondragend = function(){
+      this.style.border="4px dashed transparent";
+    }
+  </script>
+ </body>
+</html>

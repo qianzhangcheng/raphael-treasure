@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  #targetObj {
+    border: 4px solid #eee;
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  </style>
+ </head>
+ <body>
+  <h1>练习：拖动图片进入DIV</h1> 
+  <!--拖放的目标对象 -->
+  <div id="targetObj"></div>
+
+  <!--拖放的源对象 --><br><br>
+  <img id="srcObj" src="img/2.jpg" alt="">
+
+
+  <script>
+  //拖动进入DIV,边框变深；离开则变浅
+  targetObj.ondragenter = function(){
+    this.style.borderColor = '#999';
+  }
+  targetObj.ondragover = function(event){
+    event.preventDefault();  //只有阻止dragover的默认行为才能触发ondrop
+  }
+  targetObj.ondrop = function(){  //鼠标松开
+    console.log('drop');
+    this.style.borderColor = '#eee';
+    this.appendChild(srcObj); //DIV把IMG追加为自己的孩子
+    /*var copy = srcObj.cloneNode(); //克隆节点-核心DOM方法
+    copy.removeAttribute('id');
+    this.appendChild(copy);*/
+  }
+  targetObj.ondragleave = function(){
+    this.style.borderColor = '#eee';
+  }
+  </script>
+ </body>
+</html>

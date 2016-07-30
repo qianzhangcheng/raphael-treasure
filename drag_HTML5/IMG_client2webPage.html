@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <style>
+  #container {
+    border: 1px solid #aaa;
+    padding: 10px;
+    min-height: 400px;
+  }
+  </style>
+ </head>
+ <body>
+  <h1>显示/上传客户端的图片</h1>  
+  <div id="container"></div>
+
+  <script>
+  //拖动事件的目标对象——document
+  document.ondragover = function(event){
+    event.preventDefault(); //让drop事件可被触发
+  }
+  document.ondrop = function(event){
+    console.log('document drop...');
+    event.preventDefault(); //阻止图片在新窗口中打开
+  }
+
+  //拖动事件的目标对象——div#container
+  container.ondragover = function(event){
+    event.preventDefault(); //让drop事件可被触发
+  }
+  container.ondrop = function(event){
+    console.log('div#container drop...');
+    //读取到此次拖放事件中的文件数据
+    //console.log(event.dataTransfer.files);//FileList
+    var f0 = event.dataTransfer.files[0]; //File
+    
+    var reader = new FileReader();//文件读取器
+    //reader.readAsText( f0 );//读取文件中的字符
+    reader.readAsDataURL( f0 );
+    
+    reader.onload = function(){ //读取完成事件
+      console.log('文件数据读取完成：');
+      console.log(reader.result); //文件数据
+      //把DataURL声明为一个img元素的src
+      var img = document.createElement('img');
+      img.src = reader.result;
+      container.appendChild(img);
+    }
+  }
+  </script>
+ </body>
+</html>

@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  #targetObj {
+    border: 4px solid #eee;
+    width: 400px;
+    height: 300px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  </style>
+ </head>
+ <body>
+  <h1>练习：拖动图片进入DIV</h1> 
+  <!--拖放的目标对象 -->
+  <div id="targetObj"></div>
+
+  <!--拖放的源对象 --><br><br>
+  <img src="img/1.jpg" alt="">
+  <img src="img/2.jpg" alt="">
+  <img src="img/3.jpg" alt="">
+  <img src="img/4.jpg" alt="">
+
+
+  <script>
+  var imgList = document.querySelectorAll('img');
+  for(var i=0; i<imgList.length; i++){
+    //为每个图片(源对象)绑定事件监听
+    var img = imgList[i];
+    img.ondragstart = function(event){ //开始拖动
+      console.log('src: drag start');
+      console.log(event.dataTransfer);
+      event.dataTransfer.setData('text/html', this.getAttribute('src')); //保存数据-海南装拖拉机
+    }
+    img.ondrag = function(){ //拖动中
+    }
+    img.ondragend = function(){ //拖动结束
+    }
+  }
+
+  //目标对象可以触发的拖放事件
+  targetObj.ondragenter = function(){ //拖动进入
+  }
+  targetObj.ondragover = function(event){ //悬停
+    event.preventDefault();
+  }
+  targetObj.ondrop = function(event){ //拖动释放
+    console.log('target: drop');
+    console.log(event.dataTransfer);
+    var d = event.dataTransfer.getData('text/html');
+    console.log('东北接收到了海南的数据：'+d);
+    
+    //根据属性选择器查找元素
+    var img = document.querySelector('[src="'+d+'"]');
+    this.appendChild(img);
+  }
+  targetObj.ondragleave = function(){ //拖动离开
+  }
+  </script>
+ </body>
+</html>
