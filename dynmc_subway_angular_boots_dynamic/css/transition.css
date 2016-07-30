@@ -1,0 +1,25 @@
+.row{
+  margin-top:20px;
+  margin-right:0;
+  margin-left:0;
+}
+button{
+
+  margin-top:10px;
+}
+
+@media screen and (max-width: 792px) {
+  .r-1 button{
+    width:100%;
+  }
+  .search button{
+    width:100%;
+
+  }
+  .search{
+    display:none;
+  }
+}
+a{
+  cursor:pointer !important;
+}

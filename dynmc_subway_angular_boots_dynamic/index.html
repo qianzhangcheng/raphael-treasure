@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-cn" ng-app="transition">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!--兼容最新版本的ie-->
+  <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+  <title></title>
+  <link rel="stylesheet" href="css/metro.css">
+  <link rel="stylesheet" href="css/linecolor.css" />
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/transition.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="js/html5shiv.min.js"></script>
+  <script src="js/respond.min.js"></script>
+  <![endif]-->
+  <script src="js/angular.js"></script>
+  <script src="js/angular-route.js"></script>
+  <script src="js/angular-animate.js"></script>
+
+</head>
+<body>
+  <div class="myview" ng-view style="position: relative"></div>
+  <script src="js/jquery-1.11.3.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/metro.js"></script>
+
+  <script>
+  /*
+    angular.module('transition',['ng','ngRoute','ngAnimate'])
+      .controller('start',function($scope,$http){
+        $scope.count = 0;
+
+      $scope.loadData = function(line){
+        $http.get('data/transitionDetail.php?line='+line)
+          .success(function(data){
+            $('.r-2').hide('fast');
+            $('.b-'+(line-1)).show('fast');
+            if(!$scope.datas){
+              $scope.datas = [];
+            }
+            $scope.datas = data;
+                $http.get('data/transitionTransport.php?line='+line)
+                  .success(function(data){
+//                  console.log('1111111');
+                      $.each(data,function(index,dom){
+                      	
+                        $('.'+dom.did).siblings().children().append('<div class="dot-change"><div class="tips" style="display:none"><div class="tips-info-box"><div class="tips-info-wrap">可换乘 ：&nbsp;<a href="#" ></a></div></div></div></div>');
+                        //显示隐藏提示信息
+                        var tips = $('.'+dom.did).siblings().children().children().children('.tips');
+                        $('.'+dom.did).mousemove(function(){
+                            if(tips.css('display') == 'none'){
+                             tips.css('display','block');
+                              tips.children().children().children().html(dom.transitionLine+'号线') ;
+                            }
+                          else{
+                              tips.css('display','none');
+                            }
+                        }).mouseout(function(){
+                          tips.css('display','none');
+                        })
+                      })
+                  })
+            $scope.loadID = function(did){
+//          	console.log(did);
+              $http.get('data/transitionSearch.php?did='+did)
+                .success(function(data){
+                  if($scope.count == 0) {
+                    $('#startBtn').text(data[0].line+'号线    '+data[0].transitionName);
+                    $('.r-2').show('1000');
+                    $('.b-'+(line-1)).hide('fast');
+                    $scope.count++;
+                    return;
+                  }
+                  if($scope.count == 1){
+                    $('#endBtn').text(data[0].line+'号线    '+data[0].transitionName);
+                    $('.search').show('1000');
+                  }
+                })
+            }
+
+          })
+    }
+    })
+    .config(function($routeProvider) {
+        $routeProvider
+          .when('/start', {
+            templateUrl: 'tpl/start.html',
+            controller: 'start'
+          })
+          .otherwise({
+            redirectTo: '/start'
+          })
+      })
+*/
+  </script>
+
+
+
+
+
+
+
+</body>
+</html>
