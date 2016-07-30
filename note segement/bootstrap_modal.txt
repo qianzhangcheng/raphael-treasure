@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>模态框</title>
+  <!-- 设置 viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- IE -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- 兼容国产浏览器的高速模式 -->
+  <meta name="renderer" content="webkit">
+  <!-- 引入 Bootstrap 的 CSS 文件 -->
+  <link rel="stylesheet" href="bootstrap-3.3.6-dist/css/bootstrap.css"/>
+  <!--
+      html5shiv.js 文件的作用
+      * 用于可以让 IE 8 浏览器兼容 HTML5 提供的新元素
+      respond.js 文件的作用
+      * 用于可以让 IE 8 浏览器兼容 CSS3 提供的媒体查询
+   -->
+  <!--[if lt IE 9]>
+  <script src="bootstrap-3.3.6-dist/js/html5shiv.min.js"></script>
+  <script src="bootstrap-3.3.6-dist/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div class="container">
+  <div class="row">
+    <h3>模态框</h3>
+    <!-- TODO 打开模态框 -->
+    <button data-target="#mymodal" data-toggle="modal" class="btn btn-default">打开模态框</button>
+
+    <div id="mymodal" class="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!--header-->
+          <div class="modal-header">
+            <h4 class="modal-title">标题</h4>
+          </div>
+          <!--body-->
+          <div class="modal-body">
+            <p>这是对话框的主体.</p>
+          </div>
+          <!--footer-->
+          <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-default">关闭</button>
+            <button class="btn btn-success">保存</button>
+          </div>
+          <!--footer-end-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Bootstrap 提供的 JS 文件是基于 jQuery -->
+<script src="bootstrap-3.3.6-dist/js/jquery-1.11.3.js"></script>
+<!-- 引入 Bootstrap 的 JS 文件 -->
+<script src="bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+<script>
+  // 我们自己的 JS 代码
+
+</script>
+</body>
+</html>

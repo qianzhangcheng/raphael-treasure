@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+ </head>
+ <body>
+  <h1>用户登录</h1>
+	<form action="13_login.php" method="POST">
+		昵称名：<input type="text" name="nickname"><br>
+		密码名：<input type="text" name="pwd"><br>
+		<input type="submit" value="登陆吧">
+	</form>
+ </body>
+</html>
+
+=================================================
+
+<?php
+
+$nc = $_REQUEST['nickname'];
+$mm = $_REQUEST['pwd'];
+
+$conn = mysqli_connect('127.0.0.1','root','','TMOOC',3306);
+mysqli_query($conn,'SET NAMES UTF8');
+$sql = "SELECT uid FROM users WHERE nickname='$nc' AND pwd='$mm'";
+$result = mysqli_query($conn,$sql); //不加引号
+$row = mysqli_fetch_assoc($result);
+
+if($result){
+	$row = mysqli_fetch_assoc($result);
+	if($row==null){         //判断有无查询到实际内容
+       echo '用户名or密码有误';
+	}else{
+			echo '<a href="13_login.html"></a>';
+			echo '再试试看';
+	}
+	echo 'ok get it';
+}else{
+	echo 'err not in here';
+	echo '请检查sql语法';
+}
+
+
+?>

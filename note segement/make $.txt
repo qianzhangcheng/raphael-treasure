@@ -1,0 +1,4 @@
+window.$=HTMLElement.prototype.$=function(selector){
+    var elems=(this==window?document:this).querySelectorAll(selector);
+    return elems.length==0?null:elems.length==1?elems[0]:elems;
+}

@@ -1,0 +1,95 @@
+//练习：在一个ul>li中输出一个数组中的所有值
+$scoreList = array(55, 66, 77);  //PHP5.3-
+echo '<ul>';
+echo ' <li>'.$scoreList[0].'</li>';
+echo ' <li>'.$scoreList[1].'</li>';
+echo ' <li>'.$scoreList[2].'</li>';
+echo '</ul>';
+
+echo '<ul>';
+echo "  <li>$scoreList[0]</li>";
+echo "  <li>$scoreList[1]</li>";
+echo "  <li>$scoreList[2]</li>";
+echo '</ul>';
+
+echo '<ul>';
+for($i=0; $i<count($scoreList); $i++){
+	echo "<li>$scoreList[$i]</li>";
+}
+echo '</ul>';
+
+
+====================================================
+
+
+$emp = ['eid'=>1003,'ename'=>'King','salary'=>8000,'isOnDuty'=>true];
+$empList[] = $emp;
+
+//(5)
+echo "<table border='1' width='100%'>";
+echo " <thead>";
+echo "	<tr>";
+echo "		<th>编号</th>";
+echo "		<th>姓名</th>";
+echo "		<th>工资</th>";
+echo "		<th>在岗</th>";
+echo "	</tr>";
+echo " </thead>";
+echo " <tbody>";
+foreach($empList as $value){
+	echo "<tr>";
+	echo " <td>$value[eid]</td>";
+	echo " <td>$value[ename]</td>";
+
+======================================================
+
+<?php
+
+$conn = mysqli_connect('127.0.0.1','root',"",'jd',3306);
+
+mysqli_query($conn,"SET NAMES UTF8"); //设置中文编码方式
+
+$sql = "SELECT pid,name,price,birthday,isonsale FROM product";
+
+$result = mysqli_query($conn,$sql);
+
+while(($product_list[]=mysqli_fetch_assoc($result))!=null){}
+
+ echo "<table border='1' width='100%'>";
+	echo " <thead>";
+	echo "	<tr>";
+	echo "		<th>pid</th>";
+	echo "		<th>name</th>";
+	echo "		<th>price</th>";
+	echo "		<th>birthday</th>";
+	echo "      <th>isonsale</th>";
+	echo "      <th>operation</th>";
+	echo "	</tr>";
+	echo " </thead>";
+	echo " <tbody>";
+
+	foreach($product_list as $value){ // 遍历每一个
+	
+		echo "<tr>";
+		echo "  <td>$value[pid]</td>";
+		echo "  <td>$value[name]</td>";
+		echo "  <td>￥$value[price]</td>";
+		echo "  <td>$value[birthday]</td>";
+		echo "  <td>".($value['isonsale']?'saling':'no')."</td>";
+		echo "  <td>";
+		echo "	  <a href='11_product_delete.php?pid=$value[pid]'>delete</a>";
+		echo "	  <a href='11_product_update_select.php?pid=$value[pid]'>update</a>";
+		echo "  </td>";
+		echo "</tr>";
+	      }
+	        echo " </tbody>";
+ 	        echo "</table>";
+
+	echo " <td>￥$value[salary]</td>";
+	echo " <td>".($value['isOnDuty']?'在岗':'离岗')."</td>";   // php中不能用三目运算,必须拼接
+	echo "</tr>";
+}
+echo " </tbody>";
+echo "</table>";
+
+?>

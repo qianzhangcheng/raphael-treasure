@@ -1,0 +1,20 @@
+JS
+/**1.异步请求页头和页尾**/
+$('#header').load('header.php');
+$('#footer').load('footer.php');
+
+
+PHP
+/*******/
+<?php
+header('Content-Type: text/html;charset=UTF-8');
+?>
+<!-- 页面顶部 -->
+  <header id="top"><!-- w:100% -->
+    <div id="top_box"><!-- w:1211px -->
+      <!-- 五角星 : left -->
+      <img src="images/star.jpg" />
+      <!-- 收藏京东文本 : left-->
+      <a class="lf" href="#">收藏京东</a>
+      <!-- 文本列表 :right -->
+      <ul class="rt">

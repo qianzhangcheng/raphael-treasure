@@ -1,0 +1,19 @@
+//ªÒ»°cookie
+function getCookie(cookieName){
+  var str=document.cookie;
+  var i=-1;
+  if((i=str.indexOf(cookieName+"="))!=-1){
+    var start=i+cookieName.length+1;
+    var end=str.indexOf(";",start);
+    return str.slice(start,end==-1?str.length:end);
+  }else{
+    return null;
+  }
+}
+//…Ë÷√cookie
+function setCookie(cookieName,value){
+  var date=new Date();
+  date.setFullYear(date.getFullYear()+1);
+  document.cookie=
+    cookieName+"="+value+";expires="+date.toGMTString();
+}
